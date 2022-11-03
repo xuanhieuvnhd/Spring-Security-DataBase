@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<div sec:authorize="isAuthenticated()">
+    <b>Welcome!<span sec:authentication="principal.username"></span></b>
+    <a th:href="@{/logout}">Đăng xuất</a>
+</div>
+
+<div sec:authorize="isAnonymous()">
+    <a href="/homepage">Trang chủ</a>
+    <a href="/loginPage">Login</a>
+    <a href="/admin">Admin</a>
+</div>
+
+</body>
+</html>
